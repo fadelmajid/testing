@@ -1,0 +1,5 @@
+/application/logs
+/application/session
+/application/config/production
+/application/config/development
+/uploads
