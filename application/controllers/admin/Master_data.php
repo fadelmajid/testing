@@ -102,36 +102,13 @@ class Master_data extends MY_Admin
         $this->form_validation->set_error_delimiters(PREFIX_ERROR_DELIMITER, SUFFIX_ERROR_DELIMITER);
         $this->form_validation->set_rules('cat_name', 'Category Name', 'strip_tags|trim|required|callback__is_unique_category_name');
         $this->form_validation->set_rules('cat_order', 'Category Order', 'strip_tags|trim|integer');
-        $this->form_validation->set_rules('cat_img', 'Category Image', 'callback__check_upload_image_cat_img');
         
         $err_msg = [];
         if ($this->form_validation->run()) {
-            //BEGIN UPLOAD IMAGE
-            $image_name = '';
-            if (is_uploaded_file($_FILES['cat_img']['tmp_name'])) {
-
-                $this->load->library("google_cloud_bucket");
-                $image_name = str_replace(UPLOAD_PATH, '', CATEGORY_IMAGE_PATH).$_FILES['cat_img']['name'];
-
-                if(!@fopen(UPLOAD_URL.$image_name, 'r')){
-                    $data = [
-                        "source" => $_FILES['cat_img']['tmp_name'],
-                        "name"   => $image_name
-                    ];
-                    
-                    $this->google_cloud_bucket->upload_image($data);
-                }
-            }
-            //END UPLOAD IMAGE
-
             $params = [
                 'cat_name' => $this->input->post('cat_name'),
-                'cat_order' => set_var($this->input->post('cat_order'), 1)
+                'cat_order' => $this->input->post('cat_order')
             ];
-
-            if($image_name != ''){
-                $params['cat_img']  = $image_name;
-            }
 
             if ($id > 0 && in_array('edit', $permits)) { 
                 $params['updated_by'] = $this->_get_user_id();

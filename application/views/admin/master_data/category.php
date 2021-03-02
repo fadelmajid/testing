@@ -38,7 +38,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <th>
                                     <?php echo sort_table_icon($page_url, 'name', 'Name', $xtra_var); ?>
                                 </th>
-                                <th>Category Image</th>
                                 <th>
                                     <?php echo sort_table_icon($page_url, 'order', 'Category Order', $xtra_var); ?>
                                 </th>
@@ -63,7 +62,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <tr>
                                         <td>'.$value->cat_id.'</td>
                                         <td>'.$value->cat_name.'</td>
-                                        <td class="text-center"><img src="'.$test.'" height=55px" alt=""></td>
                                         <td>'.$value->cat_order.'</td>
                                         '.$action_str.'
                                     </tr>

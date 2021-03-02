@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <?php if ($show_form) : ?>
             <div class="ibox">
                 <div class="ibox-content" style="">
-                    <?php echo form_open_multipart($current_url.'/'.(isset($category->cat_id) ? $category->cat_id : ''), array('id'=>'theform')); ?>
+                    <?php echo form_open_multipart($current_url.'/'.(isset($category->cat_id) ? $category->cat_id : 0), array('id'=>'theform')); ?>
                         <input type="hidden" name="cat_id" value="<?php echo set_value('cat_id', (isset($category->cat_id) ? $category->cat_id : 0)); ?>">
                         <div class="form-group">
                             <h5>Category Name</h5>
@@ -25,16 +25,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <h5>Category Order</h5>
                             <input class="form-control" name="cat_order" value="<?php echo set_value('cat_order', (isset($category->cat_order) ? $category->cat_order : ''));?>">
                             <?php echo form_error('cat_order'); ?>
-                        </div>
-                        <div class="form-group">
-                            <h5>Category Image</h5>
-                            <input type="file" name="cat_img" class="form-control" />
-                            <?php echo form_error('cat_img'); ?>
-                            <?php
-                                if(isset($category->cat_img) && $category->cat_img != ''){
-                                    echo '<br/><img src="'.UPLOAD_URL.$category->cat_img.'" style="max-width:400px"/>';
-                                }
-                            ?>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
