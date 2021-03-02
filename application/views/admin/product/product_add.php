@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php if ($show_form): ?>
             <div class="ibox">
                 <div class="ibox-content" style="">
-                    <?php echo form_open_multipart($current_url.'/'.($product['data'] ? $product['data']->pd_id : ''), ['id' => 'theform']); ?>
+                    <?php echo form_open_multipart($current_url.'/'.($product['data'] ? $product['data']->pd_id : 0), ['id' => 'theform']); ?>
                     <input type="hidden" name="pd_id" value="<?php echo set_value('pd_id', $product['data'] ? $product['data']->pd_id : 0); ?>">
                     <div class="form-row">
                         <div class="form-group col-6">

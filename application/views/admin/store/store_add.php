@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php if ($show_form): ?>
             <div class="ibox">
                 <div class="ibox-content" style="">
-                    <?php echo form_open($current_url.'/'.($store ? $store->st_id : ''), ['id' => 'theform']); ?>
+                    <?php echo form_open($current_url.'/'.($store ? $store->st_id : 0), ['id' => 'theform']); ?>
                     <input type="hidden" name="st_id" value="<?php echo set_value('st_id', $store ? $store->st_id : 0); ?>">
                     <div class="form-group">
                         <h5>Store Code</h5>

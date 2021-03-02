@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php if ($show_form): ?>
             <div class="ibox">
                 <div class="ibox-content" style="">
-                    <?php echo form_open($current_url.'/', ['id' => 'theform']); ?>
+                    <?php echo form_open($current_url.'/0', ['id' => 'theform']); ?>
                     <div class="form-row">
                         <div class="form-group col-4">
                             <h5>Store</h5>
