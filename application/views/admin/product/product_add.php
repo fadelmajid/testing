@@ -45,22 +45,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="form-row">
                         <div class="form-group col-6">
-                            <h5>Image</h5>
-                            <input type="file" name="pd_img" class="form-control" />
-                            <?php echo form_error('pd_img'); ?>
-                            <?php
-                                if(isset($product['data']->pd_img) && $product['data']->pd_img != ''){
-                                    echo '<br/><img src="'.UPLOAD_URL.'product/'.$product['data']->pd_img.'" style="max-width:400px"/>';
-                                }
-                            ?>
-                        </div>
-                        <div class="form-group col-6">
                             <h5>Description</h5>
                             <textarea class="form-control" name="pd_desc" id="" cols="30" rows="2"><?php echo set_value('pd_desc', ($product['data'] ? $product['data']->pd_desc : ''));?></textarea>
                             <?php echo form_error('pd_desc'); ?>
                         </div>
-                    </div>
-                    <div class="form-row">
                         <div class="form-group col-6">
                             <h5>Product Order</h5>
                             <input class="form-control" name="pd_order" value="<?php echo set_value('pd_order', ($product['data'] ? $product['data']->pd_order : '')); ?>">

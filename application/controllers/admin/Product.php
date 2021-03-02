@@ -110,24 +110,10 @@ class Product extends MY_Admin
         $this->form_validation->set_rules('pd_base_price', 'Base Price', 'required|is_natural');
         $this->form_validation->set_rules('pd_final_price', 'Final Price', 'required|is_natural_no_zero|callback__final_less_than_base');
         $this->form_validation->set_rules('pd_desc', 'Description', 'strip_tags|trim');
-        $this->form_validation->set_rules('pd_img', 'Image', 'callback__check_upload_image');
         $this->form_validation->set_rules('pd_order', 'Product Order', 'strip_tags|trim|integer');
         
         $err_msg = [];
         if ($this->form_validation->run()) {
-            //BEGIN UPLOAD IMAGE
-            $image_name = '';
-            if (is_uploaded_file($_FILES['pd_img']['tmp_name'])) {
-                $tmp_filepath = $_FILES['pd_img']['tmp_name'];
-                $image_name = basename($_FILES["pd_img"]["name"]);
-                if (!move_uploaded_file($tmp_filepath, PRODUCT_IMAGE_PATH. $image_name)){
-                    $err_msg = [
-                        'msg' => 'Cannot upload the Product Image!',
-                        'type' => 'danger'
-                    ];
-                }
-            }
-            //END UPLOAD IMAGE
             if(empty($err_msg)){
                 $params = [
                     'pd_name'        => $this->input->post('pd_name'),
@@ -138,9 +124,6 @@ class Product extends MY_Admin
                     'pd_order'       => set_var($this->input->post('pd_order'), 1),
                     'pd_status'      => $this->config->item('product')['status']['active'],
                 ];
-                if($image_name != ''){
-                    $params['pd_img']  = $image_name;
-                }
                     
                 if ($id > 0 && in_array('edit', $permits)) {
                     $params['updated_by'] = $this->_get_user_id();

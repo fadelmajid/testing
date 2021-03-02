@@ -31,7 +31,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <thead>
                             <tr>
                                 <th><?php echo sort_table_icon($page_url, 'id', 'ID', $xtra_var); ?></th>
-                                <th>Image</th>
                                 <th style="width:15%"><?php echo sort_table_icon($page_url, 'name', 'Name', $xtra_var); ?></th>
                                 <th><?php echo sort_table_icon($page_url, 'category', 'Category', $xtra_var); ?></th>
                                 <th style="width:20%"><?php echo sort_table_icon($page_url, 'desc', 'Description', $xtra_var); ?></th>
@@ -78,7 +77,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         ?>
                                 <tr>
                                     <td><?php echo $product->pd_id; ?></td>
-                                    <td class="text-center"><img src="<?php echo UPLOAD_URL.$product->pd_img; ?>" height=55px" alt=""></td>
                                     <td><?php echo $product->pd_name; ?></td>
                                     <td><?php echo $product->cat_name; ?></td>
                                     <td><?php echo nl2br($product->pd_desc); ?></td>
